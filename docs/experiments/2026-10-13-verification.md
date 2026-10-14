@@ -4,6 +4,8 @@ Date: 2026-10-13 America/Denver
 
 Environment: Windows, Python 3.15.0 for the final local run. Public CI is configured for Python 3.10, 3.12, and 3.14.
 
+Publication: public repository `https://github.com/Ikteder/agenttracecanary`; final local and remote `main` SHA `3133cc7af22e0da0928e04ba078fd0082ac84838` before this documentation follow-up. GitHub Actions run `38510491078` passed all three Python jobs on 3.10, 3.12, and 3.14.
+
 ## Commands and results
 
 | Check | Result |
