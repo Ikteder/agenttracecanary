@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgentTrace Canary report</title><style>
+:root{--ink:#15202b;--muted:#5e6b78;--paper:#f4f7f4;--card:#fff;--accent:#0b7a75;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1080px;margin:auto;padding:32px 20px}h1{font-size:clamp(2rem,6vw,4rem);line-height:1;margin:.2em 0}
+.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.card{background:var(--card);border:1px solid #dce5df;border-radius:14px;padding:18px}.number{font-size:2rem;font-weight:800}
+.bad{color:var(--bad)}.table-wrap{overflow:auto;background:var(--card);border:1px solid #dce5df;border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:650px}th,td{padding:12px;text-align:left;border-bottom:1px solid #e6ece8;vertical-align:top}
+code{font-size:.85em}footer{color:var(--muted);margin-top:24px;overflow-wrap:anywhere}@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+</style></head><body><main><div class="eyebrow">Offline OTLP structural audit</div><h1>Regression</h1>
+<p>Span IDs and absolute timestamps are ignored. Parentage, ordered roles, status placement, optional typed links, and local trace invariants are compared.</p>
+<section class="grid"><div class="card"><div class="number">10</div>baseline cases</div>
+<div class="card"><div class="number">10</div>candidate cases</div>
+<div class="card"><div class="number bad">9</div>changed shapes</div>
+<div class="card"><div class="number bad">14</div>findings</div></section>
+<div class="table-wrap"><table><thead><tr><th>Case</th><th>Finding</th><th>Explanation</th></tr></thead><tbody><tr><td>agent-order</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>duplicate-call-id</td><td><code>DUPLICATE_TOOL_CALL_ID</code></td><td>tool call id &#x27;call-1&#x27; appears on 2 execution spans</td></tr><tr><td>error-rebound</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>flattened-agent</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>interval-escape</td><td><code>PARENT_WINDOW</code></td><td>execute_tool:search falls outside its parent interval</td></tr><tr><td>interval-escape</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>link-retarget</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>missing-parent</td><td><code>MISSING_PARENT</code></td><td>execute_tool:fetch has a missing parent</td></tr><tr><td>missing-parent</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>missing-parent</td><td><code>TOOL_OUTSIDE_AGENT</code></td><td>execute_tool:fetch has no agent/workflow ancestor</td></tr><tr><td>tool-order</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>workflow-reparent</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr><tr><td>wrong-parent</td><td><code>PARENT_WINDOW</code></td><td>execute_tool:search falls outside its parent interval</td></tr><tr><td>wrong-parent</td><td><code>STRUCTURE_CHANGED</code></td><td>candidate causal shape differs from baseline</td></tr></tbody></table></div>
+<footer>Evidence digest: <code>55a30dc4a24d3c856ec12d7bbc96d1865c8181e84a6d68508782a95f2e05433e</code></footer></main></body></html>

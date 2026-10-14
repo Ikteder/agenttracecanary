@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgentTrace Canary report</title><style>
+:root{--ink:#15202b;--muted:#5e6b78;--paper:#f4f7f4;--card:#fff;--accent:#0b7a75;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1080px;margin:auto;padding:32px 20px}h1{font-size:clamp(2rem,6vw,4rem);line-height:1;margin:.2em 0}
+.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.card{background:var(--card);border:1px solid #dce5df;border-radius:14px;padding:18px}.number{font-size:2rem;font-weight:800}
+.bad{color:var(--bad)}.table-wrap{overflow:auto;background:var(--card);border:1px solid #dce5df;border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:650px}th,td{padding:12px;text-align:left;border-bottom:1px solid #e6ece8;vertical-align:top}
+code{font-size:.85em}footer{color:var(--muted);margin-top:24px;overflow-wrap:anywhere}@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+</style></head><body><main><div class="eyebrow">Offline OTLP structural audit</div><h1>Match</h1>
+<p>Span IDs and absolute timestamps are ignored. Parentage, ordered roles, status placement, optional typed links, and local trace invariants are compared.</p>
+<section class="grid"><div class="card"><div class="number">10</div>baseline cases</div>
+<div class="card"><div class="number">10</div>candidate cases</div>
+<div class="card"><div class="number bad">0</div>changed shapes</div>
+<div class="card"><div class="number bad">0</div>findings</div></section>
+<div class="table-wrap"><table><thead><tr><th>Case</th><th>Finding</th><th>Explanation</th></tr></thead><tbody><tr><td colspan="3">No structural regression found.</td></tr></tbody></table></div>
+<footer>Evidence digest: <code>9786dfd45bf9177ba8c7a51b67fb74366ff1a568b13c2a609728fb8da9a5ac2e</code></footer></main></body></html>

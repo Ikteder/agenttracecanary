@@ -1,0 +1,175 @@
+{
+  "cases": [
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "95d05262a9155f97510d703bb9ce6a6bd9ee9d7e79d1537c5bb711d6bf9b3cc5",
+      "case_id": "agent-order"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "case_id": "duplicate-call-id"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "6392a91ed4188ba24cf809893308731add797c2617b4596af8fe6c9042665697",
+      "candidate_digest": "ecd1681f08e32e3880758aeee02ed2d91696e3b2cd53a2474aba600ce78cd7cc",
+      "case_id": "error-rebound"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "01393307dee46f7881b04d6b4b398e899f163c7e61725c407f1379d97684311d",
+      "case_id": "flattened-agent"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "0c87a801a73f9a76e816c5832213460ea24b6becee6a12105b66cd6cc1abd0f1",
+      "case_id": "interval-escape"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "9c8a8efb42e2d8952f40ecd5a58f34e00e0b58c4d20dd39288871a365e7219c0",
+      "case_id": "link-retarget"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "7aef0842a26744ea42e3987805723ae29f4f323b17bbd01a29abf71b9b23b5ab",
+      "case_id": "missing-parent"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "6c3d7bd64c187ddaab5d6565019934312efcba8c4749499549f77effce0c4da2",
+      "case_id": "tool-order"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "09248af1a41345b135c2962694b8a5008eb2e5e24a2163f97b9c54d67f720b37",
+      "case_id": "workflow-reparent"
+    },
+    {
+      "aggregate_equal": true,
+      "baseline_digest": "0d84edd0ae2bece624e2f84b97942c81e9dc269b09f790651b3d335a6a95fd7e",
+      "candidate_digest": "5984a9a89b9d87f1c91503c5c7e67161215ecd12d3ace7afc182fc3a4d9855e9",
+      "case_id": "wrong-parent"
+    }
+  ],
+  "evidence_digest": "55a30dc4a24d3c856ec12d7bbc96d1865c8181e84a6d68508782a95f2e05433e",
+  "findings": [
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[chat:final|OK|links(uses_result->execute_tool:search)[],invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]]]]",
+      "case_id": "agent-order",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": null,
+      "candidate": null,
+      "case_id": "duplicate-call-id",
+      "code": "DUPLICATE_TOOL_CALL_ID",
+      "message": "tool call id 'call-1' appears on 2 execution spans"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|ERROR|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|ERROR|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "case_id": "error-rebound",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:plan|OK|links()[],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "case_id": "flattened-agent",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": null,
+      "candidate": null,
+      "case_id": "interval-escape",
+      "code": "PARENT_WINDOW",
+      "message": "execute_tool:search falls outside its parent interval"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[execute_tool:search|OK|links()[],chat:plan|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "case_id": "interval-escape",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:fetch)[]]]",
+      "case_id": "link-retarget",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": null,
+      "candidate": null,
+      "case_id": "missing-parent",
+      "code": "MISSING_PARENT",
+      "message": "execute_tool:fetch has a missing parent"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]||execute_tool:fetch|OK|links()[]",
+      "case_id": "missing-parent",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": null,
+      "candidate": null,
+      "case_id": "missing-parent",
+      "code": "TOOL_OUTSIDE_AGENT",
+      "message": "execute_tool:fetch has no agent/workflow ancestor"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:fetch|OK|links()[],execute_tool:search|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "case_id": "tool-order",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]],execute_tool:fetch|OK|links()[]]",
+      "case_id": "workflow-reparent",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    },
+    {
+      "baseline": null,
+      "candidate": null,
+      "case_id": "wrong-parent",
+      "code": "PARENT_WINDOW",
+      "message": "execute_tool:search falls outside its parent interval"
+    },
+    {
+      "baseline": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[],execute_tool:search|OK|links()[],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "candidate": "invoke_workflow:support|OK|links()[invoke_agent:planner|OK|links()[invoke_agent:researcher|OK|links()[chat:plan|OK|links()[execute_tool:search|OK|links()[]],execute_tool:fetch|OK|links()[]],chat:final|OK|links(uses_result->execute_tool:search)[]]]",
+      "case_id": "wrong-parent",
+      "code": "STRUCTURE_CHANGED",
+      "message": "candidate causal shape differs from baseline"
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "aggregate_changed_cases": 0,
+    "baseline_cases": 10,
+    "candidate_cases": 10,
+    "detected_cases": 10,
+    "finding_count": 14,
+    "structural_changed_cases": 9
+  },
+  "verdict": "regression"
+}

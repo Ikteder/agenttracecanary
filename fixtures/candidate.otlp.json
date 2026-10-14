@@ -1,0 +1,2146 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "synthetic-agent"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "agenttracecanary.synthetic",
+            "version": "1"
+          },
+          "spans": [
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "wrong-parent"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c00-root"
+            },
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c00-agent"
+            },
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c00-sub"
+            },
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c00-plan"
+            },
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c00-sub"
+            },
+            {
+              "traceId": "c00-trace",
+              "spanId": "c00-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c00-trace",
+                  "spanId": "c00-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c00-agent"
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "tool-order"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c01-root"
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c01-agent"
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c01-sub"
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-search",
+              "name": "search",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c01-sub"
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c01-sub"
+            },
+            {
+              "traceId": "c01-trace",
+              "spanId": "c01-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c01-trace",
+                  "spanId": "c01-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c01-agent"
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "flattened-agent"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c02-root"
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c02-agent"
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c02-agent"
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c02-sub"
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c02-sub"
+            },
+            {
+              "traceId": "c02-trace",
+              "spanId": "c02-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c02-trace",
+                  "spanId": "c02-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c02-agent"
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "error-rebound"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c03-root"
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c03-agent"
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c03-sub"
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_ERROR"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c03-sub"
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c03-sub"
+            },
+            {
+              "traceId": "c03-trace",
+              "spanId": "c03-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c03-trace",
+                  "spanId": "c03-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c03-agent"
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "missing-parent"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c04-root"
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c04-agent"
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c04-sub"
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c04-sub"
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c04-absent"
+            },
+            {
+              "traceId": "c04-trace",
+              "spanId": "c04-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c04-trace",
+                  "spanId": "c04-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c04-agent"
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "duplicate-call-id"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c05-root"
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c05-agent"
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c05-sub"
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c05-sub"
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c05-sub"
+            },
+            {
+              "traceId": "c05-trace",
+              "spanId": "c05-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c05-trace",
+                  "spanId": "c05-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c05-agent"
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "interval-escape"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c06-root"
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c06-agent"
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c06-sub"
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-search",
+              "name": "search",
+              "startTimeUnixNano": "150",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c06-sub"
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c06-sub"
+            },
+            {
+              "traceId": "c06-trace",
+              "spanId": "c06-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c06-trace",
+                  "spanId": "c06-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c06-agent"
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "link-retarget"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c07-root"
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c07-agent"
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c07-sub"
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c07-sub"
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c07-sub"
+            },
+            {
+              "traceId": "c07-trace",
+              "spanId": "c07-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c07-trace",
+                  "spanId": "c07-fetch",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c07-agent"
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "agent-order"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c08-root"
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "800",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c08-agent"
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-plan",
+              "name": "plan",
+              "startTimeUnixNano": "540",
+              "endTimeUnixNano": "570",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c08-sub"
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-search",
+              "name": "search",
+              "startTimeUnixNano": "580",
+              "endTimeUnixNano": "650",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c08-sub"
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "670",
+              "endTimeUnixNano": "750",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c08-sub"
+            },
+            {
+              "traceId": "c08-trace",
+              "spanId": "c08-final",
+              "name": "final",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "480",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c08-trace",
+                  "spanId": "c08-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c08-agent"
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-root",
+              "name": "support",
+              "startTimeUnixNano": "0",
+              "endTimeUnixNano": "1000",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_workflow"
+                  }
+                },
+                {
+                  "key": "gen_ai.workflow.name",
+                  "value": {
+                    "stringValue": "support"
+                  }
+                },
+                {
+                  "key": "agenttrace.case.id",
+                  "value": {
+                    "stringValue": "workflow-reparent"
+                  }
+                }
+              ],
+              "links": []
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-agent",
+              "name": "planner",
+              "startTimeUnixNano": "100",
+              "endTimeUnixNano": "900",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "planner"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c09-root"
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-sub",
+              "name": "researcher",
+              "startTimeUnixNano": "200",
+              "endTimeUnixNano": "500",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "invoke_agent"
+                  }
+                },
+                {
+                  "key": "gen_ai.agent.name",
+                  "value": {
+                    "stringValue": "researcher"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c09-agent"
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-plan",
+              "name": "plan",
+              "startTimeUnixNano": "220",
+              "endTimeUnixNano": "250",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c09-sub"
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-search",
+              "name": "search",
+              "startTimeUnixNano": "260",
+              "endTimeUnixNano": "330",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "search"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-1"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c09-sub"
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-fetch",
+              "name": "fetch",
+              "startTimeUnixNano": "350",
+              "endTimeUnixNano": "430",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "execute_tool"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.name",
+                  "value": {
+                    "stringValue": "fetch"
+                  }
+                },
+                {
+                  "key": "gen_ai.tool.call.id",
+                  "value": {
+                    "stringValue": "call-2"
+                  }
+                }
+              ],
+              "links": [],
+              "parentSpanId": "c09-root"
+            },
+            {
+              "traceId": "c09-trace",
+              "spanId": "c09-final",
+              "name": "final",
+              "startTimeUnixNano": "520",
+              "endTimeUnixNano": "700",
+              "status": {
+                "code": "STATUS_CODE_OK"
+              },
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "local-fixture"
+                  }
+                }
+              ],
+              "links": [
+                {
+                  "traceId": "c09-trace",
+                  "spanId": "c09-search",
+                  "attributes": [
+                    {
+                      "key": "gen_ai.relationship.type",
+                      "value": {
+                        "stringValue": "uses_result"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "parentSpanId": "c09-agent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
